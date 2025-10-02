@@ -1,7 +1,9 @@
 package dk.ek.kinoxp.catalog.model;
 
 import jakarta.persistence.*;
+import org.springframework.cglib.core.Local;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -12,18 +14,20 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long movie_id;
     private String title;
+    private String poster;
     private int duration_min;
     private int age_limit;
-    private Date start_date;
-    private Date end_date;
+    private LocalDate start_date;
+    private LocalDate end_date;
 
     public Movie() {
 
     }
 
-    public Movie(Long movie_id, String title, int duration_min, int age_limit, Date start_date, Date end_date) {
+    public Movie(Long movie_id, String title, String poster, int duration_min, int age_limit, LocalDate start_date, LocalDate end_date) {
         this.movie_id = movie_id;
         this.title = title;
+        this.poster = poster;
         this.duration_min = duration_min;
         this.age_limit = age_limit;
         this.start_date = start_date;
@@ -46,6 +50,14 @@ public class Movie {
         this.title = title;
     }
 
+    public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
+    }
+
     public int getDuration_min() {
         return duration_min;
     }
@@ -62,19 +74,19 @@ public class Movie {
         this.age_limit = age_limit;
     }
 
-    public Date getStart_date() {
+    public LocalDate getStart_date() {
         return start_date;
     }
 
-    public void setStart_date(Date start_date) {
+    public void setStart_date(LocalDate start_date) {
         this.start_date = start_date;
     }
 
-    public Date getEnd_date() {
+    public LocalDate getEnd_date() {
         return end_date;
     }
 
-    public void setEnd_date(Date end_date) {
+    public void setEnd_date(LocalDate end_date) {
         this.end_date = end_date;
     }
 }

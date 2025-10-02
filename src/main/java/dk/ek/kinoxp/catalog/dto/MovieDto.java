@@ -3,6 +3,7 @@ package dk.ek.kinoxp.catalog.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public record MovieDto(
@@ -11,6 +12,8 @@ public record MovieDto(
         @NotBlank(message = "Movie must have a title")
         String title,
 
+        String poster,
+
         @NotNull(message = "Movie must have a duration")
         int duration_min,
 
@@ -18,9 +21,9 @@ public record MovieDto(
         int age_limit,
 
         @NotNull(message = "Movie must have a start date")
-        Date start_date,
+        LocalDate start_date,
 
         @NotNull(message ="Movie must have a end date")
-        Date end_date
+        LocalDate end_date
 ) {
 }

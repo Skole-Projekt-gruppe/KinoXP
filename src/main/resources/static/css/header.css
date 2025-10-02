@@ -8,12 +8,14 @@ header, footer{
     background-color: rgb(148,54,52);
 }
 
+
 body {
     min-height: 100dvh;
     display: grid;
-    grid-template-row: auto 1fr auto;
+    grid-template-rows: auto 1fr auto;
     margin: 0;
     padding: 0;
+    background-color: rgb(210,130,100);
 }
 
 h1 {
@@ -39,4 +41,42 @@ input {
 
 a:visited {
     color: #0000EE;
+}
+
+#moviebox-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.movie-box {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(180,90,50);
+    width: 250px;
+    margin: 10px;
+    border: 2px solid rgb(200,110,80);
+}
+
+.movie-poster {
+    width: 206px;
+    height: 309px;
+}
+
+.movie-title {
+
+}
+
+.movie-startdate {
+
+}
+
+.movie-enddate {
+
 }
