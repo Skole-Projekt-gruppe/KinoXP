@@ -11,21 +11,21 @@ public class Product
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected int product_id;
+    protected Integer product_id;
     protected String name;
     protected int price;
 
 
     public Product(){}
 
-    public Product(int product_id, String name, int price)
+    public Product(Integer product_id, String name, int price)
     {
         this.product_id = product_id;
         this.name = name;
         this.price = price;
     }
 
-    public int getProduct_id() {return product_id;}
+    public Integer getProduct_id() {return product_id;}
     public void setProduct_id(int id) {this.product_id = id;}
 
     public String getName() {return name;}

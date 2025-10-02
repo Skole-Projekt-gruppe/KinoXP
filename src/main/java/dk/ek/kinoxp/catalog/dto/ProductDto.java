@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public record ProductDto(
-        int product_id,
+        Integer product_id,
 
         @NotBlank(message = "Product must have a name")
         String name,
