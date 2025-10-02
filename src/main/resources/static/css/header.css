@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+
+* {
+    font-family: "Zalando Sans", sans-serif;
+}
+
+header, footer{
+    background-color: rgb(148,54,52);
+}
+
+body {
+    min-height: 100dvh;
+    display: grid;
+    grid-template-row: auto 1fr auto;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 50px;
+    text-align: center;
+}
+
+.footer-div {
+    flex: 1;
+    text-align: center;
+}
+
+.footer {
+    display: flex;
+}
+
+input {
+    height: 25px;
+    width: 250px;
+    text-align: center;
+    margin: 10px;
+}
+
+a:visited {
+    color: #0000EE;
+}
