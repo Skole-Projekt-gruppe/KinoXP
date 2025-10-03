@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sale of product</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/shop.css">
+</head>
+<body>
+<header>
+    <h1>KinoXP Shop</h1>
+</header>
+
+<div id="product-container">
+    <h2>Produkter</h2>
+    <div id="products"></div>
+
+    <div id="cart">
+        <h2>Kurv</h2>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Produkt</th>
+                <th>Pris</th>
+                <th>Antal</th>
+                <th>Total</th>
+                <th>Handling</th>
+            </tr>
+            </thead>
+            <tbody id="cartItems"></tbody>
+        </table>
+        <p><strong>Samlet pris:</strong> <span id="total">0</span> kr</p>
+    </div>
+</div>
+
+<footer>
+    <div class="footer">
+        <div class="footer-div">
+            <form>
+                <h2><label for="email">Newsletter:</label></h2>
+                <input type="text" id="email" placeholder="Enter Email">
+                <br>
+                <input type="submit">
+            </form>
+        </div>
+        <div class="footer-div">
+            <h2>Business Information</h2>
+            <p>CVR: 31878020</p>
+            <p>Mosedalvej 14 2500 Valby</p>
+        </div>
+        <div class="footer-div">
+            <h2>Terms</h2>
+            <a href="https://kino.dk/betalingsbetingelser">Payment Terms</a>
+            <br><br>
+            <a href="https://kino.dk/privatlivspolitik">Privacy Policy</a>
+            <br><br>
+            <a href="https://kino.dk/retningslinjer">Guidelines</a>
+            <br><br>
+        </div>
+    </div>
+</footer>
+
+<script src="javascript/productSale.js"></script>
+</body>
+</html>
