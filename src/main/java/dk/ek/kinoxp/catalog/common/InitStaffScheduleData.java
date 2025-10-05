@@ -27,14 +27,14 @@ public class InitStaffScheduleData implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         if (staffScheduleRepository.count() > 0) {
-            System.out.println("⏩ StaffSchedule data already exists, skipping initialization.");
+            System.out.println("StaffSchedule data already exists, skipping initialization.");
             return;
         }
 
         List<Staff> staffList = staffRepository.findAll();
 
         if (staffList.isEmpty()) {
-            System.out.println("⚠️ No staff found. Make sure InitStaffData runs first.");
+            System.out.println("No staff found. Make sure InitStaffData runs first.");
             return;
         }
 
@@ -56,6 +56,6 @@ public class InitStaffScheduleData implements CommandLineRunner {
             staffScheduleRepository.save(new StaffSchedule(null, staff, friday, morningShift, eveningShift));
         }
 
-        System.out.println("✅ StaffSchedule data inserted for " + staffList.size() + " staff members.");
+        System.out.println("StaffSchedule data inserted for " + staffList.size() + " staff members.");
     }
 }
