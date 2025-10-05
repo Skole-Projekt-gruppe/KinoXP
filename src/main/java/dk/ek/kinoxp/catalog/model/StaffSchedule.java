@@ -34,6 +34,9 @@ public class StaffSchedule
         this.shift_end = shift_end;
     }
 
+    public Integer getStaffSchedule_id() {return staffSchedule_id;}
+    public void setStaffSchedule_id(Integer staffSchedule_id) {}
+
     public Staff getStaff(){return staff;}
     public void setStaff(Staff staff){this.staff = staff;}
 
