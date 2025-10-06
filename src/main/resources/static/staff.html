@@ -3,33 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Kino staff</title>
-
     <link rel="stylesheet" href="/css/header.css">
-
+    <link rel="stylesheet" href="/css/staff.css">
 </head>
-
 <body>
 <header>
     <h1>KinoXP Staff</h1>
 </header>
-<div id="staff-container">
-    <h2>Our Team</h2>
-    <div id="staff-list"></div>
 
-    <div id="staff">
-    <h2>Staff Members</h2>
-    <table border="1">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Role</th>
-            <th>Email</th>
-        </tr>
-        </thead>
-    </table>
-
-    </div>
-</div>
+<main class="container">
+    <section class="staff-section">
+        <h2>Staff Members</h2>
+        <table id="staff-table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody id="staff-tbody"></tbody>
+        </table>
+    </section>
 
 <footer>
     <div class="footer">
@@ -57,5 +52,6 @@
     </div>
 </footer>
 
+<script src="/javascript/staff.js"></script>
 </body>
 </html>
