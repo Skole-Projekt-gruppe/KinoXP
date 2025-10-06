@@ -1,0 +1,60 @@
+.content { padding: 16px; }
+
+#showsTable {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto 24px;
+    border-collapse: collapse;
+    background: #fff;
+    border: 2px solid rgb(200,110,80);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+#showsTable thead th {
+    text-align: left;
+    padding: 10px 12px;
+    background: rgb(180,90,50);
+    color: #fff;
+    border-bottom: 2px solid rgb(200,110,80);
+    white-space: nowrap;
+}
+
+#showsTable tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+    background: #fff;
+}
+
+#showsTable tbody tr:hover td { background: #fff6f1; }
+
+.btn, .disclosure-btn {
+    border: 1px solid rgb(200,110,80);
+    background: #fff;
+    border-radius: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+.disclosure-btn { width: 30px; height: 30px; padding: 0; }
+.disclosure-btn[aria-expanded="true"] { background: #ffe9df; }
+
+.actions { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.expand-row td { padding: 0; background: #fffaf7; }
+.expand-panel { padding: 12px; border-top: 1px dashed rgb(200,110,80); }
+
+.subtable { width: 100%; border-collapse: collapse; margin-top: 6px; }
+.subtable th, .subtable td { padding: 8px 10px; border-bottom: 1px solid #eee; text-align: left; }
+
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border: 1px solid rgb(200,110,80);
+    border-radius: 999px;
+    font-size: 12px;
+    background: #fff;
+}
+
+#messages { max-width: 1100px; margin: 0 auto 10px; }
