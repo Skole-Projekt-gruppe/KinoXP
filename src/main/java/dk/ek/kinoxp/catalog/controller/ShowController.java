@@ -1,6 +1,5 @@
 package dk.ek.kinoxp.catalog.controller;
 
-
 import dk.ek.kinoxp.catalog.dto.ShowDto;
 import dk.ek.kinoxp.catalog.service.ShowService;
 import org.springframework.http.ResponseEntity;
