@@ -5,11 +5,25 @@
     <title>Sale of product</title>
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/shop.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 <body>
 <header>
     <h1>KinoXP Shop</h1>
 </header>
+
+<form id="createProductForm">
+    <label>
+        Name:
+        <input id="name" name="name" type="text" required />
+    </label>
+    <label>
+        Price (kr):
+        <input id="price" name="price" type="number" step="0.01" min="0" required />
+    </label>
+    <button type="submit">Create product</button>
+    <span id="createProductMsg"></span>
+</form>
 
 <div id="product-container">
     <h2>Produkter</h2>
