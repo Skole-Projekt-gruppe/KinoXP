@@ -24,13 +24,13 @@ public class KioskController
         this.showService = showService;
     }
 
-    @GetMapping
+    @GetMapping("/products")
     public ResponseEntity<List<ProductDto>> getAllProducts() {
         List<ProductDto> productDtos = productService.getAllProducts();
         return ResponseEntity.ok(productDtos);
     }
 
-    @GetMapping
+    @GetMapping("/shows")
     public ResponseEntity<List<ShowDto>> getAllShows() {
         List<ShowDto> showDtos = showService.getAllShow();
         return ResponseEntity.ok(showDtos);
