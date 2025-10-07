@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Forestillinger</title>
+
+    <link rel="stylesheet" href="/css/sideHeader.css">
+    <link rel="stylesheet" href="/css/shows.css"> <!-- din ekstra tabelstyle, hvis du har -->
+</head>
+<body>
+
+<!-- VENSTRE SIDE-BAR -->
+<aside class="side-header">
+    <h2 class="logo">🎞️ KinoXP - medarbejder</h2>
+    <nav class="side-nav">
+        <ul>
+            <li><a href="/bookingCalender.html">Bookings</a></li>
+            <li><a href="/employee.html">Shows</a></li>
+            <li><a href="/productSale.html">Sale</a></li>
+            <li><a href="/vagtPlan.html">Duty schedule</a></li>
+        </ul>
+    </nav>
+</aside>
+
+
+<main class="content">
+    <h1>Shows</h1>
+
+    <section id="messages" aria-live="polite"></section>
+
+    <table id="showsTable" aria-label="Forestillinger">
+        <thead>
+        <tr>
+            <th style="width:42px;"></th>
+            <th>Titel</th>
+            <th>Teather</th>
+            <th>Start time</th>
+            <th>End time</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody id="showsTbody"></tbody>
+    </table>
+</main>
+
+<script src="/javascript/shows.js"></script>
+</body>
+</html>

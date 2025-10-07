@@ -1,20 +1,31 @@
 package dk.ek.kinoxp.catalog.common;
 
 import dk.ek.kinoxp.catalog.model.Movie;
+import dk.ek.kinoxp.catalog.model.Show;
+import dk.ek.kinoxp.catalog.model.Teather;
 import dk.ek.kinoxp.catalog.repository.MovieRepository;
+import dk.ek.kinoxp.catalog.repository.ShowRepository;
+import dk.ek.kinoxp.catalog.repository.TeatherRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Component
 public class InitData implements CommandLineRunner {
 
     private final MovieRepository movieRepository;
+    private final ShowRepository showRepository;
+    private final TeatherRepository teatherRepository;
 
-    public InitData(MovieRepository movieRepository) {
+    public InitData(MovieRepository movieRepository,
+                    ShowRepository showRepository,
+                    TeatherRepository teatherRepository) {
         this.movieRepository = movieRepository;
+        this.teatherRepository = teatherRepository;
+        this.showRepository = showRepository;
     }
 
     @Override
@@ -140,5 +151,24 @@ public class InitData implements CommandLineRunner {
         );
         movieRepository.save(incredibles2);
 
+        
+
+        // Show og Teather
+        Teather smallTeather = new Teather(
+            null,
+            "small teahter"
+        );
+        teatherRepository.save(smallTeather);
+
+        Show insterstallar = new Show(
+                null,
+                LocalDate.of(2025,11,1),
+                LocalTime.of(16,32),
+                LocalTime.of(19,32),
+                interstellar,
+                smallTeather
+
+        );
+        showRepository.save(insterstallar);
     }
 }
