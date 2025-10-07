@@ -151,6 +151,9 @@ public class InitData implements CommandLineRunner {
         );
         movieRepository.save(incredibles2);
 
+        
+
+        // Show og Teather
         Teather smallTeather = new Teather(
             null,
             "small teahter"
@@ -160,7 +163,7 @@ public class InitData implements CommandLineRunner {
         Show insterstallar = new Show(
                 null,
                 LocalDate.of(2025,11,1),
-                LocalTime.of(1,32),
+                LocalTime.of(16,32),
                 LocalTime.of(19,32),
                 interstellar,
                 smallTeather
