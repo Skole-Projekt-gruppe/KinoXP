@@ -25,13 +25,13 @@ public class Staff
     }
 
     public Integer getStaff_id() {return staff_id;}
-    public void setStaff_id(Integer staff_id) {}
+    public void setStaff_id(Integer staff_id) {this.staff_id = staff_id;}
 
     public String getName() {return name;}
-    public void setName(String name) {}
+    public void setName(String name) {this.name = name;}
 
     public String getRole() {return role;}
-    public void setRole(String role) {}
+    public void setRole(String role) {this.role = role;}
 
 
 }

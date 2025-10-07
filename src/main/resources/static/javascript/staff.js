@@ -13,10 +13,10 @@ async function fetchStaff() {
         if (!response.ok) {
             throw new Error("Could not fetch staff");
         }
-
         return await response.json();
     } catch (error) {
         console.error(error);
+        return [];
     }
 }
 
@@ -24,7 +24,7 @@ async function showStaff() {
     const staff = await fetchStaff();
     const tbody = document.getElementById("staff-tbody");
 
-    // Clear any existing rows
+    // Clear existing rows
     tbody.innerHTML = "";
 
     for (const member of staff) {
@@ -41,13 +41,13 @@ async function showStaff() {
         // === Schedule ===
         const scheduleCell = document.createElement("td");
         try {
-            const response = await fetch(`${STAFF_URL}/${member.id}/schedule`);
+            const response = await fetch(`${STAFF_URL}/${member.staff_id}/schedule`);
             if (!response.ok) throw new Error("Failed to fetch schedule");
             const schedule = await response.json();
 
-            if (schedule.length > 0) {
+            if (schedule && schedule.length > 0) {
                 scheduleCell.innerHTML = schedule
-                    .map(s => `${new Date(s.date).toLocaleDateString()} (${s.startTime} - ${s.endTime})`)
+                    .map(s => `${new Date(s.work_date).toLocaleDateString()} (${s.shift_start} - ${s.shift_end})`)
                     .join("<br>");
             } else {
                 scheduleCell.textContent = "No shifts assigned";
@@ -62,14 +62,10 @@ async function showStaff() {
         const button = document.createElement("button");
         button.textContent = "Add";
         button.classList.add("add-shift-button");
-
-        button.addEventListener('click', () => {
-            alert(`Add shift for ${member.name}`);
-        });
-
+        button.addEventListener('click', () => addShift(member));
         actionsCell.appendChild(button);
 
-        // === Add all cells to row ===
+        // === Append all cells to row ===
         row.appendChild(nameCell);
         row.appendChild(roleCell);
         row.appendChild(scheduleCell);
