@@ -6,14 +6,15 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-body{
+ /*body{
     display: flex;
     align-items: center;
     padding: 0 10px;
     justify-content: center;
     min-height: 100vh;
-    background: #9B59B6;
-}
+    background: rgb(148,54,52);
+} */
+
 .wrapper{
     width: 450px;
     background: #fff;

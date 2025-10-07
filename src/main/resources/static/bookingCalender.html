@@ -1,45 +1,57 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="da" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <title>Bookings</title>
     <link rel="stylesheet" href="css/bookingCalender.css">
+    <link rel="stylesheet" href="css/sideHeader.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Google Font Link for Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+
 </head>
 <body>
-<div class="wrapper">
-    <header>
-        <p class="current-date"></p>
-        <div class="icons">
-            <span id="prev" class="material-symbols-rounded">chevron_left</span>
-            <span id="next" class="material-symbols-rounded">chevron_right</span>
-        </div>
-    </header>
-    <div class="calendar">
-
-        <ul class="weeks">
-            <li>Sun</li>
-            <li>Mon</li>
-            <li>Tue</li>
-            <li>Wed</li>
-            <li>Thu</li>
-            <li>Fri</li>
-            <li>Sat</li>
+<!-- VENSTRE SIDE-BAR -->
+<aside class="side-header">
+    <h2 class="logo">🎞️ KinoXP - employee</h2>
+    <nav class="side-nav">
+        <ul>
+            <li><a href="/bookingCalender.html">Bookings</a></li>
+            <li><a href="/employee.html">Shows</a></li>
+            <li><a href="/productSale.html">Sale</a></li>
+            <li><a href="/vagtPlan.html">Duty schedule</a></li>
         </ul>
-        <ul class="days"></ul>
-    </div>
+    </nav>
+</aside>
 
-    <div class="legend">
-        <span><i class="swatch heat-0"></i> 0</span>
-        <span><i class="swatch heat-1"></i> 1–9</span>
-        <span><i class="swatch heat-2"></i> 10–24</span>
-        <span><i class="swatch heat-3"></i> 25–49</span>
-        <span><i class="swatch heat-4"></i> 50–99</span>
-        <span><i class="swatch heat-5"></i> 100+</span>
+<main class="content calendar-page">
+    <div class="wrapper">
+        <header>
+            <p class="current-date"></p>
+            <div class="icons">
+                <span id="prev" class="material-symbols-rounded">chevron_left</span>
+                <span id="next" class="material-symbols-rounded">chevron_right</span>
+            </div>
+        </header>
+
+        <div class="calendar">
+            <ul class="weeks">
+                <li>Sun</li><li>Mon</li><li>Tue</li><li>Wed</li><li>Thu</li><li>Fri</li><li>Sat</li>
+            </ul>
+            <ul class="days"></ul>
+        </div>
+
+        <div class="legend">
+            <span><i class="swatch heat-0"></i> 0</span>
+            <span><i class="swatch heat-1"></i> 1–9</span>
+            <span><i class="swatch heat-2"></i> 10–24</span>
+            <span><i class="swatch heat-3"></i> 25–49</span>
+            <span><i class="swatch heat-4"></i> 50–99</span>
+            <span><i class="swatch heat-5"></i> 100+</span>
+        </div>
     </div>
-</div>
+</main>
+
 
 <script src="javascript/bookingCalender.js"></script>
 </body>
