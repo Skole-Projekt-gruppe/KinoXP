@@ -24,11 +24,9 @@ async function loadStaff() {
 
                 const name = s.name || [s.firstName, s.lastName].filter(Boolean).join(' ') || 'Unknown';
                 const role = s.role || s.title || '—';
-                const email = s.email || s.mail || '—';
 
                 tr.appendChild(td(name));
                 tr.appendChild(td(role));
-                tr.appendChild(td(email));
                 tbody.appendChild(tr);
             });
         }
