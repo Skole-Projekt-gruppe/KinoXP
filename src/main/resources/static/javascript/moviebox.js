@@ -38,10 +38,18 @@ async function showMovieBox() {
         poster.src = `posters/${movie.poster}`;
         poster.className = "movie-poster";
 
-        const title = document.createElement("h2");
+        const title = document.createElement("a");
         div.appendChild(title);
         title.textContent = movie.title;
         title.className = "movie-title";
+        title.href = "viewMovie.html"
+        title.dataset.id = movie.movie_id;
+        title.addEventListener("click", async (event) => {
+            event.preventDefault();
+            const movieId = event.target.dataset.id;
+            sessionStorage.setItem("movieId", movieId);
+            window.location.href = "viewMovie.html";
+        })
 
         const startdate = document.createElement("p");
         div.appendChild(startdate);

@@ -1,0 +1,191 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+ /*body{
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    justify-content: center;
+    min-height: 100vh;
+    background: rgb(148,54,52);
+} */
+
+.wrapper{
+    width: 450px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+.wrapper header{
+    display: flex;
+    align-items: center;
+    padding: 25px 30px 10px;
+    justify-content: space-between;
+}
+header .icons{
+    display: flex;
+}
+header .icons span{
+    height: 38px;
+    width: 38px;
+    margin: 0 1px;
+    cursor: pointer;
+    color: #878787;
+    text-align: center;
+    line-height: 38px;
+    font-size: 1.9rem;
+    user-select: none;
+    border-radius: 50%;
+}
+.icons span:last-child{
+    margin-right: -10px;
+}
+header .icons span:hover{
+    background: #f2f2f2;
+}
+header .current-date{
+    font-size: 1.45rem;
+    font-weight: 500;
+}
+.calendar{
+    padding: 20px;
+}
+.calendar ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    text-align: center;
+}
+.calendar .days{
+    margin-bottom: 20px;
+}
+.calendar li{
+    color: #333;
+    width: calc(100% / 7);
+    font-size: 1.07rem;
+}
+.calendar .weeks li{
+    font-weight: 500;
+    cursor: default;
+}
+.calendar .days li{
+    z-index: 1;
+    cursor: pointer;
+    position: relative;
+    margin-top: 30px;
+}
+.days li.inactive{
+    color: #aaa;
+}
+.days li.active{
+    color: #fff;
+}
+.days li::before{
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 50%;
+    height: 40px;
+    width: 40px;
+    z-index: -1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+.days li.active::before{
+    background: #9B59B6;
+}
+.days li:not(.active):hover::before{
+    background: #f2f2f2;
+}
+
+/* ---- Booking heatmap & badges ---- */
+.days li {
+    position: relative;
+    transition: transform .05s ease;
+}
+.days li .count-badge {
+    position: absolute;
+    bottom: -6px;
+    right: 4px;
+    min-width: 26px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    line-height: 20px;
+    background: #eef2ff;
+    color: #333;
+    border: 1px solid rgba(0,0,0,.06);
+    pointer-events: none;
+    user-select: none;
+}
+.days li.has-bookings::before {
+    /* samme cirkel som 'active', men bruges til heat baggrund */
+    opacity: 0.22;
+}
+
+/* Heat levels (baggrund på ::before) */
+.days li.heat-0::before { background: #e9ecef; }       /* 0 */
+.days li.heat-1::before { background: #d0f0d7; }       /* 1–9 (lys grøn) */
+.days li.heat-2::before { background: #a9e0b3; }       /* 10–24 */
+.days li.heat-3::before { background: #ffd27a; }       /* 25–49 (gul) */
+.days li.heat-4::before { background: #ffb36b; }       /* 50–99 (orange) */
+.days li.heat-5::before { background: #ff6b6b; }       /* 100+ (rød) */
+
+/* Når det er dagens dato OG heat på samme tid, prioriter “active”-farven til tekst */
+.days li.active { color: #fff; }
+.days li.active.heat-5::before,
+.days li.active.heat-4::before,
+.days li.active.heat-3::before,
+.days li.active.heat-2::before,
+.days li.active.heat-1::before,
+.days li.active.heat-0::before {
+    background: #9B59B6; /* behold din aktive lilla */
+    opacity: 1;
+}
+
+/* Legend */
+.legend {
+    display: flex;
+    gap: 10px;
+    padding: 0 20px 18px 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    color: #444;
+    font-size: .9rem;
+}
+.legend .swatch {
+    display: inline-block;
+    width: 16px; height: 16px;
+    border-radius: 3px;
+    vertical-align: -2px;
+    margin-right: 6px;
+    border: 1px solid rgba(0,0,0,.08);
+}
+.legend .heat-0 { background: #e9ecef; }
+.legend .heat-1 { background: #d0f0d7; }
+.legend .heat-2 { background: #a9e0b3; }
+.legend .heat-3 { background: #ffd27a; }
+.legend .heat-4 { background: #ffb36b; }
+.legend .heat-5 { background: #ff6b6b; }
+
+/* Tooltip på hover (vis antal bookinger) */
+.days li[data-count]:hover::after {
+    content: attr(data-count) " booking(s)";
+    position: absolute;
+    top: -8px; left: 50%;
+    transform: translate(-50%, -100%);
+    white-space: nowrap;
+    background: #111;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: .75rem;
+    pointer-events: none;
+    box-shadow: 0 6px 18px rgba(0,0,0,.15);
+}
