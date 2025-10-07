@@ -37,8 +37,30 @@ async function showStaff() {
         const roleCell = document.createElement("td");
         roleCell.textContent = member.role;
 
+        const actionsCell = document.createElement("td");
+        const button = document.createElement("addshift-button");
+        actionsCell.appendChild(button);
+        button.textContent = "Add";
+        button.classList.add("add-shift-button");
+
+
+        button.addEventListener('click', () => {
+
+            alert(`Add shift for ${member.name}`);
+        });
+
         row.appendChild(nameCell);
         row.appendChild(roleCell);
+        row.appendChild(actionsCell);
+
         tbody.appendChild(row);
+
+
     });
 }
+
+    function addShift(member)
+    {
+        alert(`Add shift for ${member.name}`);
+
+    }
