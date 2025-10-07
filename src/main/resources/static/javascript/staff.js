@@ -1,52 +1,44 @@
-document.addEventListener('DOMContentLoaded', () => {
-    loadStaff();
-});
+window.addEventListener('load', initApp);
 
-async function loadStaff() {
-    const tbody = document.getElementById('staff-tbody');
-    const assignSelect = document.getElementById('assign-staff');
+const BASE_URL = "http://localhost:8080";
+const STAFF_URL = `${BASE_URL}/staff`;
 
-    if (!tbody) return;
+async function initApp() {
+    await showStaff();
+}
 
-    tbody.innerHTML = '<tr><td colspan="3">Loading...</td></tr>';
-
+async function fetchStaff() {
     try {
-        const res = await fetch('/api/staff', { headers: { 'Accept': 'application/json' } });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const staff = await res.json();
-
-        if (!Array.isArray(staff) || staff.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="3">No staff found.</td></tr>';
-        } else {
-            tbody.innerHTML = '';
-            staff.forEach(s => {
-                const tr = document.createElement('tr');
-
-                const name = s.name || [s.firstName, s.lastName].filter(Boolean).join(' ') || 'Unknown';
-                const role = s.role || s.title || '—';
-
-                tr.appendChild(td(name));
-                tr.appendChild(td(role));
-                tbody.appendChild(tr);
-            });
+        const response = await fetch(STAFF_URL);
+        if (!response.ok) {
+            throw new Error("Could not fetch staff");
         }
 
-        if (assignSelect) {
-            assignSelect.innerHTML = '';
-            assignSelect.appendChild(new Option('Select staff...', '', true, false));
-            staff.forEach(s => {
-                const name = s.name || [s.firstName, s.lastName].filter(Boolean).join(' ') || `#${s.id}`;
-                assignSelect.appendChild(new Option(name, s.id));
-            });
-        }
-    } catch (e) {
-        tbody.innerHTML = `<tr><td colspan="3">Failed to load staff.</td></tr>`;
-        console.error('Failed to load staff:', e);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error(error);
     }
 }
 
-function td(text) {
-    const cell = document.createElement('td');
-    cell.textContent = text;
-    return cell;
+async function showStaff() {
+    const staff = await fetchStaff();
+    const tbody = document.getElementById("staff-tbody");
+
+    // Clear any existing rows
+    tbody.innerHTML = "";
+
+    staff.forEach(member => {
+        const row = document.createElement("tr");
+
+        const nameCell = document.createElement("td");
+        nameCell.textContent = member.name;
+
+        const roleCell = document.createElement("td");
+        roleCell.textContent = member.role;
+
+        row.appendChild(nameCell);
+        row.appendChild(roleCell);
+        tbody.appendChild(row);
+    });
 }
