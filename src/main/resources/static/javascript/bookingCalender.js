@@ -101,9 +101,41 @@ function applyHeatAndBadges(year, monthIndex, countsMap) {
 
         // klik (åbn dag-visning / filter / modal – udskift med din logik)
         li.onclick = () => {
-            // Her kan du fx navigere til en dag-side:
-            // window.location.href = `/shows?date=${key}`;
             alert(`${key}: ${count} bookings`);
+        };
+
+        // Opret knapper, men skjul dem først
+        const buttonsContainer = document.createElement("div");
+        buttonsContainer.className = "day-buttons";
+        buttonsContainer.style.display = "none"; // skjult som default
+
+        const cancelBtn = document.createElement("button");
+        cancelBtn.textContent = "Cancel All";
+        cancelBtn.onclick = (event) => {
+            event.stopPropagation();
+            alert(`All bookings on ${key} canceled`);
+        };
+
+        const editBtn = document.createElement("button");
+        editBtn.textContent = "Edit";
+        editBtn.onclick = (event) => {
+            event.stopPropagation();
+            alert(`Editing bookings on ${key}`);
+        };
+
+        buttonsContainer.appendChild(cancelBtn);
+        buttonsContainer.appendChild(editBtn);
+        li.appendChild(buttonsContainer);
+
+        // Klik på dagen: toggle knapperne
+        li.onclick = (event) => {
+            // skjul knapper på andre dage først
+            document.querySelectorAll(".day-buttons").forEach(btns => {
+                if (btns !== buttonsContainer) btns.style.display = "none";
+            });
+
+            // toggle for denne dag
+            buttonsContainer.style.display = buttonsContainer.style.display === "none" ? "block" : "none";
         };
     });
 }
