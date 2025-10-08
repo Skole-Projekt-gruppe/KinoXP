@@ -5,6 +5,7 @@ import dk.ek.kinoxp.catalog.model.StaffSchedule;
 import dk.ek.kinoxp.catalog.repository.StaffRepository;
 import dk.ek.kinoxp.catalog.repository.StaffScheduleRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.sql.Time;
@@ -13,6 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 @Component
+@Order(2)
 public class InitStaffScheduleData implements CommandLineRunner {
 
     private final StaffRepository staffRepository;

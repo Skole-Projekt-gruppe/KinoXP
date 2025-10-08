@@ -3,12 +3,14 @@ package dk.ek.kinoxp.catalog.common;
 import dk.ek.kinoxp.catalog.model.Staff;
 import dk.ek.kinoxp.catalog.repository.StaffRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
 import java.time.LocalDate;
 
 @Component
+@Order(1)
 public class InitStaffData implements CommandLineRunner
 {
     private final StaffRepository staffRepository;

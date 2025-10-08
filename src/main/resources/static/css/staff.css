@@ -1,0 +1,70 @@
+.content {
+    padding: 16px;
+    margin-left: 220px; /* adjust based on sidebar width */
+}
+
+/* Styled Staff Table */
+#staffTable {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto 24px;
+    border-collapse: collapse;
+    background: #fff;
+    border: 2px solid rgb(200,110,80);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+#staffTable thead th {
+    text-align: left;
+    padding: 10px 12px;
+    background: rgb(180,90,50);
+    color: #fff;
+    border-bottom: 2px solid rgb(200,110,80);
+    white-space: nowrap;
+}
+
+#staffTable tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+    background: #fff;
+}
+
+#staffTable tbody tr:hover td {
+    background: #fff6f1;
+}
+
+/* Buttons and badges */
+.btn {
+    border: 1px solid rgb(200,110,80);
+    background: #fff;
+    border-radius: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #ffe9df;
+}
+
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border: 1px solid rgb(200,110,80);
+    border-radius: 999px;
+    font-size: 12px;
+    background: #fff;
+}
+
+.actions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+/* Messages container (optional) */
+#messages {
+    max-width: 1100px;
+    margin: 0 auto 10px;
+}
