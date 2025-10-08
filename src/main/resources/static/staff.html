@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kino staff</title>
+    <link rel="stylesheet" href="/css/sideHeader.css">
+    <link rel="stylesheet" href="/css/staff.css">
+</head>
+<body>
+
+<!-- VENSTRE SIDE-BAR -->
+
+<aside class="side-header">
+    <h2 class="logo">🎞️ KinoXP - medarbejder</h2>
+    <nav class="side-nav">
+        <ul>
+            <li><a href="/bookingCalender.html">Bookings</a></li>
+            <li><a href="/employee.html">Shows</a></li>
+            <li><a href="/productSale.html">Sale</a></li>
+            <li><a href="/staff.html">Duty schedule</a></li>
+        </ul>
+    </nav>
+</aside>
+
+    <div id="staff-container">
+        <h2>Staff Members</h2>
+        <div id="staff">
+            <section id="messages" aria-live="polite"></section>
+
+            <table id="staffTable" aria-label="staff">
+                <thead>
+                <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Schedule</th>
+                <th>Add Shift</th>
+            </tr>
+            </thead>
+            <tbody id="staff-tbody"></tbody>
+        </table>
+        </div>
+    </div>
+
+<script src="/javascript/staff.js"></script>
+</body>
+</html>
