@@ -78,7 +78,8 @@ a:visited {
 }
 
 .movie-title {
-
+    font-size: 24px;
+    color: black !important; /*Override a:visited*/
 }
 
 .movie-startdate {
