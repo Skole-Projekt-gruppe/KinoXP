@@ -24,8 +24,12 @@ public class MovieController {
 
     @GetMapping
     public ResponseEntity<List<MovieDto>> getAllMovies() {
-        List<MovieDto> movieDtos = movieService.getAllMovies();
-        return ResponseEntity.ok(movieDtos);
+        try {
+            List<MovieDto> movieDtos = movieService.getAllMovies();
+            return ResponseEntity.ok(movieDtos);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
     @GetMapping("/{id}")
