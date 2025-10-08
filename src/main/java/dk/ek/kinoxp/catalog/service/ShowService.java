@@ -19,17 +19,37 @@ public class ShowService
         this.showRepository = showRepository;
     }
 
-    public List<ShowDto> getAllShow(){
+    // Henter alle shows fra databasen og mapper dem til DTO'er
+    public List<ShowDto> getAllShow()
+    {
         List<Show> shows = showRepository.findAll();
-
-        //if (shows.isEmpty()){
-        //   throw new NotFoundException("No shows found");
-        // }
-
         List<ShowDto> showDtos = new ArrayList<>();
-        for(var show : shows){
+        for (Show show : shows) {
             showDtos.add(MapperShow.toDto(show));
         }
-        return showDtos;
+        return showDtos; // returnerer listen af DTO'er
+    }
+
+    // Henter ét show ud fra ID og mapper til DTO
+    public ShowDto getShowById(Long id) {
+        Show show = showRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Show not found with id: " + id));
+        return MapperShow.toDto(show);
+    }
+
+    // Opdaterer et show ud fra DTO
+    public ShowDto update(ShowDto dto) {
+        // Finder show i databasen - smider fejl, hvis den ikke findes
+        Show show = showRepository.findById(dto.show_id())
+                .orElseThrow(() -> new NotFoundException("Show not found with id: " + dto.show_id()));
+
+        // Mapper de felter der må ændres
+        MapperShow.updateEntityFromDto(dto, show);
+
+        // Gemmer ændringer i databasen
+        Show updatedShow = showRepository.save(show);
+
+        // Returnerer det opdaterede show som DTO til controlleren
+        return MapperShow.toDto(updatedShow);
     }
 }
