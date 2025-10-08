@@ -78,3 +78,4 @@ async function showStaff() {
 function addShift(member) {
     alert(`Add shift for ${member.name}`);
 }
+
