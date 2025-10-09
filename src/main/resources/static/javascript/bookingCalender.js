@@ -22,17 +22,7 @@ async function getBookingCounts(year, monthIndexZeroBased) {
     // Month som 1–12 til API:
     const month = monthIndexZeroBased + 1;
 
-    // === LIVE: API fetch (fjern kommentar når API findes) ===
-    // try {
-    //   const res = await fetch(`/api/bookings/counts?year=${year}&month=${month}`);
-    //   if (!res.ok) throw new Error("Network response was not ok");
-    //   return await res.json(); // forventer { "YYYY-MM-DD": number, ... }
-    // } catch (e) {
-    //   console.warn("Faldt tilbage til dummy-data pga. fejl:", e);
-    //   return buildDummyCounts(year, month);
-    // }
-
-    // === MIDLER­TIDIG: Dummy data så UI virker nu ===
+    //Dummy data så UI virker nu ===
     return buildDummyCounts(year, month);
 }
 

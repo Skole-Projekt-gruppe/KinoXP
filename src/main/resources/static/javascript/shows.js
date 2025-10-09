@@ -1,5 +1,5 @@
 // === shows.js ===
-const SHOWS_ENDPOINT = "/shows"; // Skal matche din @RequestMapping (vær obs på store/små bogstaver)
+const SHOWS_ENDPOINT = "/shows"; // Skal matche din @RequestMapping
 let tbody; // udfyldes når DOM er klar
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -177,7 +177,7 @@ async function editShow(id){
     }
 }
 
-//  === CREATE (minimal) — GLOBAL ===
+//  Create Show
 async function createShow({ planned_at, start_time, end_time, movie_id, teather_id, movie_title, teather_name }) {
     // Tillad "HH:MM" ved at tilføje ":00"
     const toSec = v => (String(v).length === 5 ? `${v}:00` : String(v));
@@ -210,7 +210,7 @@ async function createShow({ planned_at, start_time, end_time, movie_id, teather_
     return data;
 }
 
-// Prompt-baseret "Create Show"
+// Create Show
 async function openCreateForm() {
     const defaultDate = new Date().toISOString().slice(0, 10);
 
