@@ -5,31 +5,48 @@
     <title>Sale of product</title>
     <link rel="stylesheet" href="/css/indexheaderfooter.css">
     <link rel="stylesheet" href="/css/shop.css">
+
 </head>
 <body>
 <header>
     <h1>KinoXP Shop</h1>
 </header>
 
+<!--For creation of products!-->
+<!--
+<form id="createProductForm">
+    <label>
+        Name:
+        <input id="name" name="name" type="text" required />
+    </label>
+    <label>
+        Price (kr):
+        <input id="price" name="price" type="number" step="0.01" min="0" required />
+    </label>
+    <button type="submit">Create product</button>
+    <span id="createProductMsg"></span>
+</form>
+-->
+
 <div id="product-container">
     <h2>Produkter</h2>
     <div id="products"></div>
 
     <div id="cart">
-        <h2>Kurv</h2>
+        <h2>Cart</h2>
         <table border="1">
             <thead>
             <tr>
-                <th>Produkt</th>
-                <th>Pris</th>
-                <th>Antal</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Amount</th>
                 <th>Total</th>
-                <th>Handling</th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody id="cartItems"></tbody>
         </table>
-        <p><strong>Samlet pris:</strong> <span id="total">0</span> kr</p>
+        <p><strong>Total price:</strong> <span id="total">0</span> kr</p>
     </div>
 </div>
 

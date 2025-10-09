@@ -23,6 +23,48 @@ async function fetchProducts() {
     }
 }
 
+async function createProduct(payload) {
+    const res = await fetch(`${PRODUCTS_URL}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+    });
+    if (!res.ok) {
+        const msg = await res.text().catch(() => "");
+        throw new Error(`Failed to create product. ${msg}`);
+    }
+    return await res.json();
+}
+
+function setupCreateProductForm() {
+    const form = document.getElementById("createProductForm");
+    const msg = document.getElementById("createProductMsg");
+    if (!form) return;
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        msg.textContent = "";
+
+        const name = form.name.value.trim();
+        const price = Number(form.price.value);
+
+        if (!name || Number.isNaN(price) || price < 0) {
+            msg.textContent = "Please enter a valid name and price.";
+            return;
+        }
+
+        try {
+            await createProduct({ name, price });
+            msg.textContent = "Product created.";
+            form.reset();
+            await showProducts(); // re-fetch and render products
+        } catch (err) {
+            console.error(err);
+            msg.textContent = "Error creating product.";
+        }
+    });
+}
+
 // Render produkter i DOM
 async function showProducts() {
     const products = await fetchProducts();
