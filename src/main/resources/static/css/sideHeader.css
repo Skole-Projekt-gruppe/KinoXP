@@ -53,12 +53,7 @@ th, td { padding: 10px 12px; text-align: left; }
 th { background: rgb(148,54,52); color: #fff; }
 tbody tr + tr td { border-top: 1px solid #ead8cf; }
 
-/* FOOTER (valgfri) */
-footer {
-    grid-column: 2; /* ligger under main */
-    border-top: 2px solid rgb(179, 92, 76);
-    background-color: rgb(148,54,52);
-    color: white;
-    text-align: center;
-    padding: 10px;
+.side-header,
+.side-header * {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
 }
