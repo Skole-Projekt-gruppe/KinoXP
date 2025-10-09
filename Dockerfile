@@ -7,7 +7,7 @@ COPY pom.xml .
 
 COPY src ./src
 
-RUN mvn clean package -DSkipTests
+RUN mvn clean package -DskipTests
 
 #Runtime
 FROM eclipse-temurin:21-jre-alpine
