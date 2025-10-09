@@ -3,6 +3,7 @@ package dk.ek.kinoxp.catalog.common;
 import dk.ek.kinoxp.catalog.model.*;
 import dk.ek.kinoxp.catalog.repository.*;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
@@ -11,6 +12,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 @Component
+@Order(3)
 public class InitData implements CommandLineRunner {
 
     private final MovieRepository movieRepository;

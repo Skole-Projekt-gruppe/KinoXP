@@ -3,9 +3,11 @@ package dk.ek.kinoxp.catalog.common;
 import dk.ek.kinoxp.catalog.model.Product;
 import dk.ek.kinoxp.catalog.repository.ProductRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
+@Order(4)
 public class InitProductData implements CommandLineRunner {
 
     private final ProductRepository productRepository;
