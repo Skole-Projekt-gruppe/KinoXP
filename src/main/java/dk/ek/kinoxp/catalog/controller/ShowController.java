@@ -55,5 +55,12 @@ public class ShowController
         return ResponseEntity.ok(updated);
     }
 
+    // Create nyt show
+    @PostMapping
+    public ResponseEntity<ShowDto> createShow(@RequestBody ShowDto dto) {
+        ShowDto created = showService.create(dto);
+        return new ResponseEntity<>(created, HttpStatus.CREATED);
+    }
+
 }
 

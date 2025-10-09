@@ -114,6 +114,7 @@ function esc(s) {
         .replaceAll(">", "&gt;")
         .replaceAll('"', "&quot;");
 }
+
 // 🆕 HH:MM -> HH:MM:SS  (placér her sammen med dine helpers)
 function toHHMMSS(v) {
     if (!v) return "";
@@ -175,6 +176,80 @@ async function editShow(id){
         actions.innerHTML = prev;
     }
 }
+
+//  === CREATE (minimal) — GLOBAL ===
+async function createShow({ planned_at, start_time, end_time, movie_id, teather_id, movie_title, teather_name }) {
+    // Tillad "HH:MM" ved at tilføje ":00"
+    const toSec = v => (String(v).length === 5 ? `${v}:00` : String(v));
+
+    const payload = {
+        planned_at,
+        start_time: toSec(start_time),
+        end_time:   toSec(end_time),
+        // Send både id + navn for at tilfredsstille evt. @NotNull/@NotBlank på DTO'erne
+        movie:   { movie_id: Number(movie_id), title: movie_title ?? "(auto)" },
+        teather: { teather_id: Number(teather_id), name: teather_name ?? "(auto)" }
+    };
+
+    console.log("POST /shows payload:", payload);
+
+    const res = await fetch(SHOWS_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(payload)
+    });
+
+    const txt = await res.text(); // læs altid responsen én gang
+    if (!res.ok) {
+        console.error("Create failed. Status:", res.status, "Body:", txt);
+        throw new Error(`Fejl ${res.status}: ${txt || "(no body)"}`);
+    }
+
+    const data = txt ? JSON.parse(txt) : null;
+    if (typeof load === "function") load(); // Opfrisk tabellen
+    return data;
+}
+
+// Prompt-baseret "Create Show"
+async function openCreateForm() {
+    const defaultDate = new Date().toISOString().slice(0, 10);
+
+    const planned_at = prompt("Dato (YYYY-MM-DD):", defaultDate);
+    if (!planned_at) return;
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(planned_at)) {
+        alert("Ugyldigt format. Brug YYYY-MM-DD, fx 2025-10-08");
+        return;
+    }
+
+    const start_time = prompt("Start tid (HH:MM):", "19:00");
+    if (!start_time) return;
+
+    const end_time = prompt("Slut tid (HH:MM):", "21:00");
+    if (!end_time) return;
+
+    const movie_id = prompt("Movie ID:", "1");
+    if (!movie_id) return;
+
+    const teather_id = prompt("Teather ID:", "1");
+    if (!teather_id) return;
+
+    // Ekstra felter for at tilfredsstille mulige @NotBlank på nested DTO'er
+    const movie_title  = prompt("Movie title:", "(auto)");
+    if (movie_title === null) return;
+
+    const teather_name = prompt("Teather name:", "(auto)");
+    if (teather_name === null) return;
+
+    try {
+        await createShow({ planned_at, start_time, end_time, movie_id, teather_id, movie_title, teather_name });
+        alert("Forestilling oprettet!");
+    } catch (err) {
+        console.error(err);
+        alert("Kunne ikke oprette forestilling.\n" + err.message);
+    }
+
+}
+
 // Stubs til knapper (kan kobles til din backend)
 function bookShow(id){ console.log("BOOK", id); }
 function deleteShow(id){ console.log("DELETE", id); }
@@ -183,3 +258,5 @@ function deleteShow(id){ console.log("DELETE", id); }
 window.editShow = editShow;
 window.bookShow = bookShow;
 window.deleteShow = deleteShow;
+window.createShow = createShow;
+window.openCreateForm = openCreateForm;

@@ -6,7 +6,7 @@
     <title>Forestillinger</title>
 
     <link rel="stylesheet" href="/css/sideHeader.css">
-    <link rel="stylesheet" href="/css/shows.css"> <!-- din ekstra tabelstyle, hvis du har -->
+    <link rel="stylesheet" href="/css/shows.css">
 </head>
 <body>
 
@@ -23,11 +23,15 @@
     </nav>
 </aside>
 
-
 <main class="content">
     <h1>Shows</h1>
 
     <section id="messages" aria-live="polite"></section>
+
+    <!-- 🆕 Create Show knap -->
+    <section class="create-section">
+        <button class="btn btn-create" onclick="openCreateForm()">➕ Create Show</button>
+    </section>
 
     <table id="showsTable" aria-label="Forestillinger">
         <thead>

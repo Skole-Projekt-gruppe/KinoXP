@@ -116,14 +116,13 @@
     text-align: left;
 }
 
-/* Knapper */
+/* Knapper i det udvidede panel */
 .expand-panel .button-group {
     display: flex;
     gap: 8px;
     margin-top: 8px;
 }
 
-/* Sørger for at Edit/Slet inde i panelet ligner de andre knapper */
 .expand-panel .edit-btn,
 .expand-panel .delete-btn {
     background: #fff;
@@ -147,12 +146,33 @@
     transform: translateY(1px);
 }
 
-/* Bagde */
+/* === CREATE KNAP === */
+.create-section {
+    max-width: 1100px;
+    margin: 0 auto 16px;
+    text-align: right;
+}
+
+.btn-create {
+    background: var(--brand-brown);
+    color: #fff;
+    border: 2px solid var(--brand-brown);
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color .15s ease, transform .05s ease;
+}
+
+.btn-create:hover { background: rgb(180,90,50); }
+.btn-create:active { transform: translateY(1px); }
+
+/* Badge */
 .badge {
     display: inline-block;
     padding: 2px 8px;
     border: 1px solid var(--brand-brown);
-    border-radius: 999px;         /* fuldt afrundet badge */
+    border-radius: 999px;
     font-size: 12px;
     background: #fff;
 }
