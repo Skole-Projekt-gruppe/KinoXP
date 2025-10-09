@@ -31,7 +31,7 @@ async function load() {
         console.log("Shows:", data);
     } catch (e) {
         console.error(e);
-        tbody.innerHTML = row("Kunne ikke hente shows (network/JS-fejl). Se konsollen.");
+        tbody.innerHTML = row("Could not get shows (network/JS-fejl). Se konsollen.");
     }
 }
 
@@ -74,8 +74,8 @@ function toggleExpand(btn) {
       <tr class="expand-row">
         <td colspan="6">
           <div class="expand-panel">
-            <strong>Bookinger:</strong>
-            <p>(Her vil bookinger blive vist senere)</p>
+            <strong>Bookings:</strong>
+            <p>More bookings will be showen</p>
             <div class="button-group">
               <button class="edit-btn">Edit</button>
               <button class="delete-btn">Delete</button>
@@ -133,10 +133,10 @@ async function editShow(id){
     const curStart   = row.querySelector("td:nth-child(4)")?.textContent.trim() || "";
     const curEnd     = row.querySelector("td:nth-child(5)")?.textContent.trim() || "";
 
-    const titleIn   = prompt("Ny titel:", curTitle);        if (titleIn   === null) return;
-    const teatherIn = prompt("Nyt teater/sal-navn:", curTeather); if (teatherIn === null) return;
-    const startIn   = prompt("Ny starttid (HH:MM):", curStart || "19:00"); if (startIn   === null) return;
-    const endIn     = prompt("Ny sluttid (HH:MM):",  curEnd   || "21:00"); if (endIn     === null) return;
+    const titleIn   = prompt("New title", curTitle);        if (titleIn   === null) return;
+    const teatherIn = prompt("New teather:", curTeather); if (teatherIn === null) return;
+    const startIn   = prompt("New start time (HH:MM):", curStart || "19:00"); if (startIn   === null) return;
+    const endIn     = prompt("New end time (HH:MM):",  curEnd   || "21:00"); if (endIn     === null) return;
 
     if (!/^\d{2}:\d{2}$/.test(startIn) || !/^\d{2}:\d{2}$/.test(endIn)) {
         alert("Ugyldigt format. Brug HH:MM, fx 19:30");
@@ -171,7 +171,7 @@ async function editShow(id){
         await load(); // Vis de nye værdier
     } catch (err) {
         console.error(err);
-        alert("Kunne ikke gemme ændringer.");
+        alert("Could not change changes.");
     } finally {
         actions.innerHTML = prev;
     }
@@ -214,17 +214,17 @@ async function createShow({ planned_at, start_time, end_time, movie_id, teather_
 async function openCreateForm() {
     const defaultDate = new Date().toISOString().slice(0, 10);
 
-    const planned_at = prompt("Dato (YYYY-MM-DD):", defaultDate);
+    const planned_at = prompt("Date (YYYY-MM-DD):", defaultDate);
     if (!planned_at) return;
     if (!/^\d{4}-\d{2}-\d{2}$/.test(planned_at)) {
         alert("Ugyldigt format. Brug YYYY-MM-DD, fx 2025-10-08");
         return;
     }
 
-    const start_time = prompt("Start tid (HH:MM):", "19:00");
+    const start_time = prompt("Start time (HH:MM):", "19:00");
     if (!start_time) return;
 
-    const end_time = prompt("Slut tid (HH:MM):", "21:00");
+    const end_time = prompt("End time (HH:MM):", "21:00");
     if (!end_time) return;
 
     const movie_id = prompt("Movie ID:", "1");
@@ -242,10 +242,10 @@ async function openCreateForm() {
 
     try {
         await createShow({ planned_at, start_time, end_time, movie_id, teather_id, movie_title, teather_name });
-        alert("Forestilling oprettet!");
+        alert("Show have been created");
     } catch (err) {
         console.error(err);
-        alert("Kunne ikke oprette forestilling.\n" + err.message);
+        alert("Show could not be created.\n" + err.message);
     }
 
 }
