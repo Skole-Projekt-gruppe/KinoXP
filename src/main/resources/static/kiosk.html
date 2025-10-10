@@ -3,13 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Kiosk</title>
-  <link rel="stylesheet" href="/css/header.css">
-  <link rel="stylesheet" href="/css/shop.css">
+  <link rel="stylesheet" href="/css/sideHeader.css">
+  <link rel="stylesheet" href="/css/kiosk.css">
 
 </head>
 <header>
   <h1>KinoXP Kiosk</h1>
 </header>
+<body>
+
+<!-- VENSTRE SIDE-BAR -->
+
+<aside class="side-header">
+  <h2 class="logo">🎞️ KinoXP - medarbejder</h2>
+  <nav class="side-nav">
+    <ul>
+      <li><a href="/bookingCalender.html">Bookings</a></li>
+      <li><a href="/employee.html">Shows</a></li>
+      <li><a href="/productSale.html">Sale</a></li>
+      <li><a href="/staff.html">Duty schedule</a></li>
+    </ul>
+  </nav>
+</aside>
 
 <div id="product-container">
   <h2>Produkter</h2>
@@ -37,33 +52,6 @@
     <p><strong>Total price:</strong> <span id="total">0</span> kr</p>
   </div>
 </div>
-
-<footer>
-  <div class="footer">
-    <div class="footer-div">
-      <form>
-        <h2><label for="email">Newsletter:</label></h2>
-        <input type="text" id="email" placeholder="Enter Email">
-        <br>
-        <input type="submit">
-      </form>
-    </div>
-    <div class="footer-div">
-      <h2>Business Information</h2>
-      <p>CVR: 31878020</p>
-      <p>Mosedalvej 14 2500 Valby</p>
-    </div>
-    <div class="footer-div">
-      <h2>Terms</h2>
-      <a href="https://kino.dk/betalingsbetingelser">Payment Terms</a>
-      <br><br>
-      <a href="https://kino.dk/privatlivspolitik">Privacy Policy</a>
-      <br><br>
-      <a href="https://kino.dk/retningslinjer">Guidelines</a>
-      <br><br>
-    </div>
-  </div>
-</footer>
 
 <script src="javascript/kiosk.js"></script>
 </body>
